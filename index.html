@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>家計簿</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>家計簿</h1>
+    </header>
+
+    <main>
+      <section class="entry-panel" aria-labelledby="entry-heading">
+        <h2 id="entry-heading">収支を登録</h2>
+        <form id="entry-form">
+          <p>
+            <label for="entry-date">日付</label>
+            <input id="entry-date" name="date" type="date" required>
+          </p>
+          <p>
+            <label for="entry-item">品目</label>
+            <input id="entry-item" name="item" type="text" required>
+          </p>
+          <p>
+            <label for="entry-type">収支区分</label>
+            <select id="entry-type" name="type" required>
+              <option value="expense">支出</option>
+              <option value="income">収入</option>
+            </select>
+          </p>
+          <p>
+            <label for="entry-amount">金額（円）</label>
+            <input id="entry-amount" name="amount" type="number" min="1" step="1" required>
+          </p>
+          <button type="submit">追加</button>
+        </form>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <div class="overview">
+        <section class="summary-panel" aria-labelledby="summary-heading">
+          <h2 id="summary-heading">収支差額</h2>
+          <p>収支差額：<output name="total">0</output> 円</p>
+        </section>
+
+        <section class="list-panel" aria-labelledby="list-heading">
+          <h2 id="list-heading">登録したデータ</h2>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">日付</th>
+                <th scope="col">品目</th>
+                <th scope="col">収支区分</th>
+                <th scope="col">金額（円）</th>
+              </tr>
+            </thead>
+            <tbody id="entry-list">
+              <tr>
+                <td colspan="4">登録したデータはありません。</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+    <script src="index.js" defer></script>
+  </body>
+</html>
